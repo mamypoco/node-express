@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const campsiteRouter = require("./routes/campsiteRouter");
+const router = require("./routes");
 
 const hostname = "localhost";
 const port = 3000;
@@ -10,10 +10,10 @@ const app = express();
 
 app.use(morgan("dev"));
 //configure morgan to log using the development version that print some additional info
+
 app.use(express.json());
 
-app.use("/campsites", campsiteRouter);
-//this is to use router in the campsiteRouter.js
+app.use(router);
 
 app.use(express.static(__dirname + "/public"));
 //To serve static files, use the express.static built-in middleware function in Express.
